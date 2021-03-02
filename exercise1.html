@@ -1,0 +1,29 @@
+<script>
+  function perfChecker(func) {
+    const t0 = performance.now();
+    let result = func;
+    const t1 = performance.now();
+    console.log(t1-t0);
+  }
+  
+
+
+  function dscount(string, s1, s2) {
+    let str = string.toLowerCase();
+    let pair = s1 + s2;
+    pair = pair.toLowerCase();
+    let count = 0;
+    let i = 0;
+    while (true) {
+      let index = str.indexOf(pair, i);
+      if (index == -1) break;
+      i = index + 1;
+      count +=1;
+    }
+    console.log(count)
+  }
+
+  perfChecker(dscount('_ba______', 'a', 'b'))
+
+
+</script>

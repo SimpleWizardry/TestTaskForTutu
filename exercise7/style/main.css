@@ -1,0 +1,101 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container.col {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.container.col.start {
+    align-items: flex-start;
+}
+
+.container.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container[class*="data-size"] {
+    background: lightgray;
+    border: 1px solid black;
+    height: 30px;
+    width: 100px;
+}
+
+.container.chosen {
+    background: gray;
+    color: white;
+    font-weight: 700;
+}
+
+.container[class*="data-size"]:hover {
+    cursor: pointer;
+    background: darkgray;
+    color: white;
+}
+
+#search {
+    display: none;
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+#content {
+    display: none;
+    background: lightgray;
+    align-items: start; 
+    padding: 20px;
+}
+
+#content p {
+    margin:0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 30px;
+    border: 1px solid darkgray;
+    width: 500px;
+    overflow: hidden;
+}
+
+.current-progress {
+    width: 0;
+    height: 100%;
+    background: lightgray;
+}
+
+.progress-text {
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 200px;
+}
+
+.progress-wrapper {
+    display: none;
+}
+
+textarea {
+    width: 80%;
+    height: 60px;
+}
+
+td.sorted-ascending:after {
+  content: '▲'
+}
+
+td.sorted-descending:after {
+  content: '▼'
+}

@@ -1,0 +1,50 @@
+<script>
+
+  function perfChecker(func) {
+    const t0 = performance.now();
+    let result = func;
+    const t1 = performance.now();
+    console.log(result,t1-t0);
+  }
+
+function drawRatingV1(vote) {
+  if (vote >= 0 && vote <= 20) {
+      return '★☆☆☆☆';
+  }
+  else if (vote > 20 && vote <= 40) {
+    return '★★☆☆☆';
+  }
+  else if (vote > 40 && vote <= 60) {
+    return '★★★☆☆';
+  }
+  else if (vote > 60 && vote <= 80) {
+    return '★★★★☆';
+  }
+  else if (vote > 80 && vote <= 100) {
+    return '★★★★★';
+  }
+}
+
+function drawRatingV2(vote) {
+  if (vote < 21) { return '★☆☆☆☆'; }
+  else if (vote < 41) { return '★★☆☆☆'; }
+  else if (vote < 61) { return '★★★☆☆'; }
+  else if (vote < 81) { return '★★★★☆'; }
+  else { return '★★★★★'; }
+}
+
+//только для строк
+function drawRatingV3(vote) {
+  return "★☆☆☆☆".replace(/☆/g, (star, i) => {
+    return vote > i * 20 ? "★" : "☆";
+  });
+}
+
+// Проверка работы результата
+console.log(drawRatingV3(0) ); // ★☆☆☆☆
+console.log(drawRatingV3(1) ); // ★☆☆☆☆
+console.log(drawRatingV3(50)); // ★★★☆☆
+console.log(drawRatingV3(99)); // ★★★★★
+
+
+</script>

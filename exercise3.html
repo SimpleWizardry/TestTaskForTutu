@@ -1,0 +1,73 @@
+<script>
+  function perfChecker(func) {
+    const t0 = performance.now();
+    let result = func;
+    const t1 = performance.now();
+    console.log(result,t1-t0);
+  }
+
+  function cookingPancakes(pans,amount,time) {
+    //Создаем конструктор блинов (мне проще работать с блинами-объектами,имеющими свойства,аналогичные свойствам блинов из реального мира ¯\_(ツ)_/¯)
+    function PanCake() {
+      this.side1 = 'not Ready'
+      this.side2 = 'not Ready'
+      this.isReady = false
+    }
+
+    let pancakes = []
+    let duration = 0
+
+    //Заполняем массив экземпляров блинов необходимым количеством
+    let i = 0
+    while (i < amount) {
+      pancakes[i] = new PanCake()
+      i++
+    } 
+
+    //Проверка готовности обеих сторон,будет проводится после каждой итерации
+    function checkReadiness(food) {
+      (food.side1 == 'Ready' && food.side2 == 'Ready') ? food.isReady = true : food.isReady = false
+    }        
+
+    //Одна итерация(сессия) прожарки одной стороны одного блина
+    //Количество блинов,которые можно жарить одновременно,согласно условию,а также время на одну итерацию учитывается в формуле,
+    //исходя из этого времени и кол-ва сковородок 
+    function cookIteration(rawfood) {
+      (rawfood.side1 == 'not Ready') ? rawfood.side1 = 'Ready' : rawfood.side2 = 'Ready' 
+      duration += time/pans     
+    }
+
+    //Пока все блины не будут иметь флаг полной готовности,пробегаемся по массиву и последовательно прожариваем каждую сторону
+    //каждого блина,начиная с первой
+    while (pancakes.every((pancake) => !pancake.isReady)) {
+      pancakes.forEach((pancake) => {
+        cookIteration(pancake)
+        checkReadiness(pancake)
+      }) 
+    }
+    
+
+    duration = Math.ceil(duration);
+    
+    console.log(duration,pancakes);
+  }
+
+
+  //P.S. По сути с двумя сковородками и двумя сторонами двух блинов в один момент времени мы жарим один блин,так что все можно свести к функции
+  function cookingFormula(amount,time) {
+    (amount == 1) ? console.log(2) : console.log(amount*time)
+  }
+
+  function cookingFormula(amountOfPancakes,amountOfPans,time) {
+    let duration
+    if (amount > 1) {
+      let amountOfSides = amountOfPancakes*2
+      duration = amountOfSides/amountOfPans*time
+    } else {
+      duration = 2
+    }
+
+  }
+
+  cookingPancakes(2,3,1);
+</script>

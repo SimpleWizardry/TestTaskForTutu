@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>  
+  <meta charset="utf-8" />
+  <title>Exercise 7</title>
+  <link rel="stylesheet" href="style/table.css" />
+  <link rel="stylesheet" href="style/main.css" />
+</head>
+<body>
+  <div class="container col">
+
+    <div class="data-size">
+      <h1 class="data-size__title">Выберите объем данных</h1>
+      <div class="container row">
+        <div class="container data-size__small">Маленький</div>
+        <div class="container data-size__big">Большой</div>        
+      </div>
+    </div>
+
+    <div class="progress-wrapper">
+      <div class="progress-text row">
+        Подождите пожалуйста,данные загружаются..
+      </div>
+      <div class="progress-bar row">
+        <div class="current-progress">
+        </div>
+      </div>          
+    </div> 
+
+
+    <div class="container col start">
+
+      <div id="search" class="container row">
+        <input type="text" id="search-input"/>
+        <button name="search" id="search-button">Найти</button>
+      </div>
+      
+
+      <div class="table-wrapper">
+
+        <table id="table"></table>
+        <ul id="pagination"></ul> 
+
+      </div>
+
+      <div id="content" class="container col">
+        <h3>Текущий выбранный пользователь</h3>
+        <p> Выбран пользователь <b id="content-name"></b> </p>
+        Описание:
+          <textarea id="content-description" disabled></textarea>
+        <p> Адрес проживания: <b id="content-adress"></b> </p>
+        <p> Город: <b id="content-city"></b> </p>
+        <p> Провинция/штат: <b id="content-state"></b> </p>
+        <p> Индекс: <b id="content-zip"></b> </p>
+      </div>
+      
+    </div>
+
+  </div>
+  <script src="dest/pagination.js"></script>
+  <script src="dest/build.js"></script>
+</body>
+</html>

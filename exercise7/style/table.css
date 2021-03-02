@@ -1,0 +1,49 @@
+#table td {
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+/*
+table {
+  width: 70vw;
+}
+*/
+tr:not(:first-child):hover {
+    cursor:pointer;
+    opacity:0.8;
+}
+
+#pagination {
+  display: flex;
+  padding: 0;
+  list-style-type: none;
+}
+
+#pagination li {
+  margin-right: 5px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#pagination li:hover, #pagination li.active {
+  cursor: pointer;
+  color: red;
+  border: 1px solid red;
+}
+
+tr:first-of-type {
+  background: #e6e6e6;
+}
+
+tr:first-of-type td:hover {
+  background: gray;
+  cursor:pointer;
+}
+
+tr:nth-of-type(2n+2) {
+  background: #ffc7c7;
+}
+
+tr:nth-of-type(2n+3) {
+  background: #c7e5ff;
+}

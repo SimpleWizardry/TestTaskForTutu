@@ -1,0 +1,51 @@
+<script>
+  function perfChecker(func) {
+    const t0 = performance.now();
+    let result = func;
+    const t1 = performance.now();
+    console.log(result,t1-t0);
+  }
+
+  function checkSyntax(string) {
+    //Строки с условием
+    const open = '([<{'
+    const close = ')]>}'
+    //Массивы, запоминающие скобки для последующего сравнения
+    let openMem = []
+    let closeMem = []   
+    for(i=0; i<string.length; i++) { 
+      if (open.indexOf(string[i]) !== -1) {
+    //Записываем открывающую скобку в соответствующий массив памяти, если таковая встречается
+        openMem.push(string[i])
+      } else if (close.indexOf(string[i]) !== -1) {
+        let closeIndex = close.indexOf(string[i]) || false;
+        let openIndex = open.indexOf(openMem[openMem.length - 1]);
+    //Проверяем соответсвует ли встреченная закрывающая скобка последней встреченной открывающей 
+    //В случае совпадения удаляем последнюю открывающую скобку из памяти,иначе записываем элемент в массив закрывающих скобок
+        (closeIndex == openIndex) ? openMem.pop() : closeMem.push(string[i])
+      }
+    } 
+    //Если в условии выше какие то совпадения не были найдены,в массивых останутся неразрешенные элементы,не соответсвующие первоначальному условию задачи
+    if (!openMem.length && !closeMem.lenght) {
+      return 0
+    } else {
+      return 1
+    }
+  }
+
+  perfChecker(checkSyntax("(  [  <>  ()  ]  <>  )"));
+
+/*
+  console.log(
+    checkSyntax("---(++++)----") ,
+    checkSyntax("") ,
+    checkSyntax("before ( middle []) after ") ,
+    checkSyntax(") (") ,
+    checkSyntax("} {") ,
+    checkSyntax("<(   >)") ,
+    checkSyntax("(  [  <>  ()  ]  <>  )") ,
+    checkSyntax("   (      [)") 
+  );
+*/
+
+</script>
